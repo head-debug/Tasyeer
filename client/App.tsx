@@ -1,14 +1,15 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Projects from "./pages/Projects";
-import Policies from "./pages/Policies";
-import Contact from "./pages/Contact";
+
+const Index    = lazy(() => import("./pages/Index"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const About    = lazy(() => import("./pages/About"));
+const Services = lazy(() => import("./pages/Services"));
+const Projects = lazy(() => import("./pages/Projects"));
+const Policies = lazy(() => import("./pages/Policies"));
+const Contact  = lazy(() => import("./pages/Contact"));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -24,16 +25,18 @@ export default function App() {
       <ScrollToTop />
       <Header />
       <main className="flex-1">
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/policies" element={<Policies />} />
-          <Route path="/contact" element={<Contact />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/policies" element={<Policies />} />
+            <Route path="/contact" element={<Contact />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
     </div>
