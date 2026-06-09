@@ -129,7 +129,7 @@ export const Footer = () => {
                   className="text-tasyeer-orange flex-shrink-0 mt-0.5"
                 />
                 <div className="flex flex-col force-ltr">
-                  <span className="text-gray-300">+971 2 583 320</span>
+                  <span className="text-gray-300">+971 2 583 3820</span>
                   <span className="text-gray-300">+971 58 638 6522</span>
                 </div>
               </li>
