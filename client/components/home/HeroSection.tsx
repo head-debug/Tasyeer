@@ -1,11 +1,14 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { ArrowRight, ArrowLeft, Play } from "lucide-react";
-import { useRef } from "react";
+import { ArrowRight, ArrowLeft, Play, X } from "lucide-react";
+import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const HeroSection = () => {
   const { t, isArabic } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
+  const [showVideo, setShowVideo] = useState(false);
+  const navigate = useNavigate();
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -214,6 +217,7 @@ export const HeroSection = () => {
                   boxShadow: "0 20px 40px rgba(235,183,106,0.3)",
                 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => navigate("/projects")}
                 className="group bg-gradient-to-r from-tasyeer-orange to-yellow-500 text-tasyeer-dark-gray font-bold py-4 px-8 rounded-lg inline-flex items-center gap-3 justify-center shadow-lg"
               >
                 {t("hero.cta")}
@@ -229,6 +233,7 @@ export const HeroSection = () => {
                   backgroundColor: "rgba(255,255,255,0.1)",
                 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => setShowVideo(true)}
                 className="group border-2 border-white/50 text-white font-bold py-4 px-8 rounded-lg inline-flex items-center gap-3 justify-center backdrop-blur-sm hover:border-white transition-colors"
               >
                 <Play className="w-5 h-5" />
@@ -372,5 +377,37 @@ export const HeroSection = () => {
         </motion.div>
       </motion.div>
     </section>
+
+    {/* Video Popup */}
+    {showVideo && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+        onClick={() => setShowVideo(false)}
+      >
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className="relative w-full max-w-sm aspect-[9/16]"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            onClick={() => setShowVideo(false)}
+            className="absolute -top-12 right-0 text-white hover:text-tasyeer-orange transition-colors z-10"
+          >
+            <X className="w-8 h-8" />
+          </button>
+          <iframe
+            src="https://www.youtube.com/embed/2tLcD9ZA7Gs?autoplay=1&rel=0"
+            className="w-full h-full rounded-xl"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+          />
+        </motion.div>
+      </motion.div>
+    )}
   );
 };
