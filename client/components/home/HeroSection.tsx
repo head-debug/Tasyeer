@@ -28,6 +28,7 @@ export const HeroSection = () => {
   }));
 
   return (
+    <>
     <section
       ref={containerRef}
       className="relative min-h-screen bg-gradient-to-br from-tasyeer-dark-gray via-gray-900 to-tasyeer-maroon text-white flex items-center justify-center overflow-hidden"
@@ -380,23 +381,18 @@ export const HeroSection = () => {
 
     {/* Video Popup */}
     {showVideo && (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+      <div
         className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
         onClick={() => setShowVideo(false)}
       >
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          className="relative w-full max-w-sm aspect-[9/16]"
+        <div
+          className="relative w-full max-w-sm"
+          style={{ aspectRatio: "9/16" }}
           onClick={(e) => e.stopPropagation()}
         >
           <button
             onClick={() => setShowVideo(false)}
-            className="absolute -top-12 right-0 text-white hover:text-tasyeer-orange transition-colors z-10"
+            className="absolute -top-12 right-0 text-white hover:text-yellow-400 transition-colors z-10"
           >
             <X className="w-8 h-8" />
           </button>
@@ -406,8 +402,9 @@ export const HeroSection = () => {
             allow="autoplay; encrypted-media"
             allowFullScreen
           />
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     )}
+    </>
   );
 };
