@@ -163,44 +163,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact Info Cards */}
-      <section className="py-20 bg-gray-50">
-        <div className="container-tight">
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            {contactInfo.map((info, index) => (
-              <motion.a
-                key={index}
-                href={info.link}
-                target={info.link === "#" ? undefined : "_blank"}
-                rel={info.link === "#" ? undefined : "noopener noreferrer"}
-                variants={itemVariants}
-                className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-tasyeer-orange block group"
-              >
-                <div className="text-tasyeer-maroon group-hover:text-tasyeer-orange transition-colors mb-4">
-                  {info.icon}
-                </div>
-                <h3 className="text-xl font-bold text-tasyeer-dark-gray mb-3">
-                  {isArabic ? info.titleAr : info.titleEn}
-                </h3>
-                <p
-                  className={`text-gray-600 leading-relaxed ${
-                    info.forceLtr ? "force-ltr" : ""
-                  }`}
-                >
-                  {isArabic ? info.contentAr : info.contentEn}
-                </p>
-              </motion.a>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* Main Contact Section */}
       <section className="py-20 bg-white">
         <div className="container-tight">
