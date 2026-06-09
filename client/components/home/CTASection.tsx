@@ -113,7 +113,7 @@ export const CTASection = () => {
               </Link>
 
               <motion.a
-                href="tel:+9712583320"
+                href="tel:+97125833820"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="group border-2 border-white/30 text-white font-bold py-4 px-8 rounded-xl inline-flex items-center gap-3 justify-center hover:border-white hover:bg-white/10 transition-all w-full sm:w-auto"
