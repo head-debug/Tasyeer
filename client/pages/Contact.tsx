@@ -331,7 +331,7 @@ export default function Contact() {
                   <div className="flex items-center gap-4">
                     <Phone className="w-6 h-6 text-tasyeer-orange flex-shrink-0" />
                     <div className="force-ltr">
-                      <p className="text-sm text-gray-300">+971 2 583 320</p>
+                      <p className="text-sm text-gray-300">+971 2 583 3820</p>
                       <p className="text-sm text-gray-300">+971 58 638 6522</p>
                     </div>
                   </div>
@@ -417,7 +417,7 @@ export default function Contact() {
                         {isArabic ? "الهاتف:" : "Phone:"}
                       </span>{" "}
                       <span className="force-ltr">
-                        +971 2 583 320 / +971 58 638 6522
+                        +971 2 583 3820 / +971 58 638 6522
                       </span>
                     </p>
                     <p>
