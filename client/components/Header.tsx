@@ -29,13 +29,16 @@ export const Header = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center font-cairo font-bold text-2xl force-ltr"
+            className="flex items-center gap-3 font-cairo font-bold force-ltr"
           >
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fce04605038104603b965d31c7c18e8db%2F01ba1fecd45d4a0981db84d7d8237f71?format=webp&width=800&height=1200"
+              src="/favicon.png"
               alt="TASYEER Logo"
-              className="h-12 w-auto object-contain"
+              className="h-16 w-auto object-contain"
             />
+            <span className="text-3xl font-extrabold text-tasyeer-maroon tracking-wide hidden sm:block">
+              TASYEER
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
